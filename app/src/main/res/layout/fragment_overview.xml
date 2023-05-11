@@ -34,7 +34,48 @@
         android:layout_height="match_parent"
         tools:context="com.sablot.marsservice.MainActivity">
 
-        <ImageView
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/materialTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/sort_by"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/btn_all"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/all"
+            app:layout_constraintEnd_toStartOf="@+id/btn_rent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialTextView" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_rent"
+            android:text="@string/rent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_all"
+            app:layout_constraintEnd_toStartOf="@+id/btn_buy"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btn_all" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_buy"
+            android:text="@string/buy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_rent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btn_rent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/status_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,12 +94,11 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_all"
+            app:listData="@{viewModel.properties}"
             app:spanCount="2"
             tools:itemCount="16"
-            tools:listitem="@layout/grid_view_item"
-            app:listData="@{viewModel.properties}" />
-
+            tools:listitem="@layout/grid_view_item" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

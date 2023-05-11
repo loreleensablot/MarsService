@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sablot.marsservice.databinding.GridViewItemBinding
 import com.sablot.marsservice.network.MarsProperty
 
-class PhotoGridAdapter : ListAdapter<MarsProperty, PhotoGridAdapter.MarsPropertyViewHolder>(DiffCallBack) {
+class PhotoGridAdapter(private val onClickLister: OnClickListener)
+    : ListAdapter<MarsProperty, PhotoGridAdapter.MarsPropertyViewHolder>(DiffCallBack) {
 
     override fun onCreateViewHolder(
         parent: ViewGroup, viewType: Int
@@ -32,7 +33,14 @@ class PhotoGridAdapter : ListAdapter<MarsProperty, PhotoGridAdapter.MarsProperty
 
     override fun onBindViewHolder(holder: MarsPropertyViewHolder, position: Int) {
         val marsProperty = getItem(position)
+        holder.itemView.setOnClickListener {
+            onClickLister.onClick(marsProperty)
+        }
         holder.bind(marsProperty)
+    }
+
+    class OnClickListener(val clickListener: (marsProperty:MarsProperty) -> Unit) {
+        fun onClick(marsProperty:MarsProperty) = clickListener(marsProperty)
     }
 }
 

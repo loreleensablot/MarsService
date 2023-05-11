@@ -23,7 +23,6 @@
 
     <data>
         <import type="android.view.View"/>
-
         <variable
             name="property"
             type="com.sablot.marsservice.network.MarsProperty" />
@@ -52,16 +51,30 @@
             android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:layout_gravity="bottom|end"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:adjustViewBounds="true"
             android:padding="5dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_for_sale_outline"
             android:visibility="@{property.rental ? View.GONE : View.VISIBLE}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/materialTextView2"
             tools:src="@drawable/ic_for_sale_outline" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/materialTextView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/white"
+            android:padding="5dp"
+            android:visibility="@{property.rental ? View.GONE : View.VISIBLE}"
+            android:text="@string/this_is_for_sale"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/mars_property_type"
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

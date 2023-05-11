@@ -45,6 +45,18 @@ class OverviewViewModel : ViewModel() {
     fun updateFilter(type: Type) {
         getMarsRealEstateProperties(type)
     }
+
+    private val _navigateToSelectedProperty = MutableLiveData<MarsProperty?>()
+    val navigateToSelectedProperty: MutableLiveData<MarsProperty?>
+        get() = _navigateToSelectedProperty
+
+    fun displayPropertyDetails(marsProperty: MarsProperty) {
+        _navigateToSelectedProperty.value = marsProperty
+    }
+
+    fun displayPropertyDetailsComplete() {
+        _navigateToSelectedProperty.value = null
+    }
 }
 
 enum class MarsApiStatus {

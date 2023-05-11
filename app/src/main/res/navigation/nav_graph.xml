@@ -38,6 +38,10 @@
         android:name="com.sablot.marsservice.detail.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail">
+
+        <argument
+            android:name="selectedProperty"
+            app:argType="com.sablot.marsservice.network.MarsProperty"/>
     </fragment>
 
 </navigation>
